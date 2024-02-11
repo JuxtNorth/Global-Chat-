@@ -19,4 +19,3 @@ This is a MERN project that uses MongoDB, Express, React, and Node.js to create 
 - Move into the server directory using `cd server` and run `pnpm dev` to start the Express development server.
 - The client will be running on http://localhost:5173 and the server will be running on http://localhost:3000.
 - You can now test the application in your browser.
-- 
