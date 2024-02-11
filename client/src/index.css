@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+	@apply bg-slate-900;
+}
+
+a:link {
+	@apply underline text-blue-700;
+}
+
+a:visited {
+	@apply underline text-fuchsia-700;
+}
+
+a:hover {
+	@apply underline text-blue-600;
+}
