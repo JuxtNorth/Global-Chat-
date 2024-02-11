@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, FC } from "react";
 import { Link } from "react-router-dom";
 import Input from "./Input";
 
@@ -29,7 +29,7 @@ async function handleSignin(details: FormData) {
 	}
 }
 
-export default function Signin() {
+const Signin: FC = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 
@@ -72,3 +72,5 @@ export default function Signin() {
 		</div>
 	);
 }
+
+export default Signin;

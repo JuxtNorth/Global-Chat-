@@ -1,6 +1,16 @@
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef, FC } from "react";
 
-function Message({ sentBy, selfUsername, content }) {
+interface MessageProps {
+	sentBy: string;
+	selfUsername: string;
+	content: string;
+}
+
+const Message: FC = ({
+	sentBy,
+	selfUsername,
+	content
+}: MessageProps) => {
 	return (
 		<div
 			className={`${
@@ -9,11 +19,15 @@ function Message({ sentBy, selfUsername, content }) {
 					: "self-start"
 			}`}
 		>
-		  <p className={`text-white ${
-				sentBy === selfUsername
-					? "text-right"
-					: "text-left"
-			}`}>{sentBy}</p>
+			<p
+				className={`text-white ${
+					sentBy === selfUsername
+						? "text-right"
+						: "text-left"
+				}`}
+			>
+				{sentBy}
+			</p>
 			<div
 				className={`h-fit max-w-64 p-4 bg-rose-600 rounded-2xl`}
 			>
@@ -21,12 +35,17 @@ function Message({ sentBy, selfUsername, content }) {
 			</div>
 		</div>
 	);
+};
+
+interface MessageListProps {
+	messages: Array<MessageProps>;
+	username: string;
 }
 
-export default function MessageList({
+const MessageList: FC = ({
 	messages,
 	username
-}) {
+}: MessageListProps) => {
 	const dummyMessageRef = useRef(null);
 
 	useEffect(() => {
@@ -49,4 +68,6 @@ export default function MessageList({
 			</div>
 		</div>
 	);
-}
+};
+
+export default MessageList;

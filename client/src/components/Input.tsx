@@ -1,6 +1,14 @@
-import { useState } from "react";
+import { useState, FC } from "react";
 
-function Label({ htmlFor, label }) {
+interface LabelProps {
+	htmlFor?: string;
+	label?: string;
+}
+
+const Label: FC = ({
+	htmlFor,
+	label
+}: LabelProps) => {
 	return (
 		<label
 			htmlFor={htmlFor}
@@ -9,21 +17,31 @@ function Label({ htmlFor, label }) {
 			{label}
 		</label>
 	);
+};
+
+interface InputProps {
+	type?: string;
+	placeholder?: string;
+	id?: string;
+	name?: string;
+	onChange?: (string) => void;
+	label?: string;
 }
 
-export default function Input({
+const Input: FC = ({
 	type,
 	placeholder,
 	id,
 	name,
 	onChange,
-	label,
-}) {
+	label
+}: InputProps) => {
 	const [value, setValue] = useState("");
 
-	const handleChange = (event) => {
+	const handleChange = event => {
 		setValue(event.target.value);
-		if (onChange) onChange({ value: event.target.value });
+		if (onChange)
+			onChange({ value: event.target.value });
 	};
 
 	return (
@@ -31,11 +49,15 @@ export default function Input({
 			{label && <Label label={label} htmlFor={id} />}
 			<input
 				placeholder={placeholder}
+				type={type}
 				id={id}
 				name={name}
+				value={value}
 				onChange={handleChange}
 				className="text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:outline-0 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
 			/>
 		</div>
 	);
-}
+};
+
+export default Input;

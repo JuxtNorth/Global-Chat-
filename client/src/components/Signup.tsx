@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, FC } from "react";
 import { Link } from "react-router-dom";
 import Input from "./Input";
 
@@ -32,7 +32,7 @@ async function handleSignup(details: FormData) {
 	}
 }
 
-export default function Signup() {
+const Signup: FC = () => {
 	const [displayName, setDisplayName] = useState("");
 	const [username, setUsername] = useState("");
 	const [email, setEmail] = useState("");
@@ -100,3 +100,5 @@ export default function Signup() {
 		</div>
 	);
 }
+
+export default Signup;

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, FC } from "react";
 import Header from "./Header";
 import MessageList from "./MessageList";
 import MessageBox from "./MessageBox";
@@ -15,7 +15,7 @@ const socket = io(url, {
 	withCredentials: true,
 });
 
-export default function Chat() {
+const Chat:FC = () => {
 	const [username, setUsername] = useState("");
 	const [messages, setMessages] = useState<IMessage[]>([]);
 	const [onlineUsersCount, setOnlineUsersCount] = useState(0);
@@ -36,7 +36,7 @@ export default function Chat() {
 		socket.on("users-online", (count) => {
 			setOnlineUsersCount(count);
 		});
-	}, [socket, messages]);
+	}, [messages]);
 
 	const handleSend = (value) => {
 		socket.emit("message", value);
@@ -50,3 +50,5 @@ export default function Chat() {
 		</main>
 	);
 }
+
+export default Chat;

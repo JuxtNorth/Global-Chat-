@@ -1,7 +1,7 @@
-import { useState, useRef } from "react";
+import { useState, useRef, FC } from "react";
 import SendIcon from "../../icons/Send";
 
-export default function MessageBox({ onSend }) {
+const MessageBox: FC = ({ onSend }: (string) => void) => {
 	const [value, setValue] = useState("");
 	const inputRef = useRef(null);
 
@@ -34,3 +34,5 @@ export default function MessageBox({ onSend }) {
 		</section>
 	);
 }
+
+export default MessageBox;
